@@ -1,0 +1,88 @@
+<div class="page-container">
+  <div class="glass-card">
+    <div class="card-header">
+      <h1>🏢 Şirket Kayıt Formu</h1>
+      <p>
+        Yeni bir kurumsal kimlik oluşturarak personelleriniz için organizasyon yapısını başlatın.
+      </p>
+    </div>
+
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="registration-form">
+      <!-- Başarı/Hata Mesajları -->
+      @if (successMessage()) {
+        <div class="alert alert-success">{{ successMessage() }}</div>
+      }
+      @if (errorMessage()) {
+        <div class="alert alert-danger">{{ errorMessage() }}</div>
+      }
+
+      <div class="form-grid">
+        <!-- Şirket Adı -->
+        <div class="form-group full-width">
+          <label for="name">Şirket Resmi Adı</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            placeholder="Örn: IRONHR Yazılım A.Ş."
+            [class.invalid]="companyForm.get('name')?.invalid && companyForm.get('name')?.touched"
+          />
+          @if (companyForm.get('name')?.invalid && companyForm.get('name')?.touched) {
+            <small class="error-text">Şirket adı zorunludur (Maks. 200 karakter).</small>
+          }
+        </div>
+
+        <!-- Vergi Numarası -->
+        <div class="form-group">
+          <label for="taxNumber">Vergi Numarası</label>
+          <input
+            type="text"
+            id="taxNumber"
+            formControlName="taxNumber"
+            placeholder="10 haneli"
+            [class.invalid]="
+              companyForm.get('taxNumber')?.invalid && companyForm.get('taxNumber')?.touched
+            "
+          />
+          @if (companyForm.get('taxNumber')?.invalid && companyForm.get('taxNumber')?.touched) {
+            <small class="error-text">Geçerli bir vergi numarası giriniz (10 hane).</small>
+          }
+        </div>
+
+        <!-- Vergi Dairesi -->
+        <div class="form-group">
+          <label for="taxOffice">Vergi Dairesi</label>
+          <input
+            type="text"
+            id="taxOffice"
+            formControlName="taxOffice"
+            placeholder="Örn: Boğaziçi V.D."
+          />
+        </div>
+
+        <!-- Adres -->
+        <div class="form-group full-width">
+          <label for="address">Merkez Adresi</label>
+          <textarea
+            id="address"
+            formControlName="address"
+            rows="3"
+            placeholder="Resmi tebligat adresi..."
+          ></textarea>
+          @if (companyForm.get('address')?.invalid && companyForm.get('address')?.touched) {
+            <small class="error-text">Adres alanı boş bırakılamaz.</small>
+          }
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="companyForm.reset()">
+          Temizle
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Kaydediliyor...' : 'Şirketi Oluştur' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

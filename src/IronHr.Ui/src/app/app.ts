@@ -4,11 +4,11 @@
  */
 
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root', // HTML içindeki etiketi: <app-root></app-root>
-  imports: [RouterOutlet], // Sayfa geçişleri (routing) için gerekli modül
+  imports: [RouterOutlet, RouterLink, RouterLinkActive], // Navigasyon için gerekli modüller
   templateUrl: './app.html', // Tasarım dosyası
   styleUrl: './app.css' // CSS stil dosyası
 })

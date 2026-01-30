@@ -1,10 +1,6 @@
-/**
- * IRONHR - UYGULAMA YAPILANDIRMASI (CONFIGURATION)
- * Uygulamanın bağımlılıklarını (Providers) ve genel ayarlarını yönetir.
- */
-
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
 
@@ -13,6 +9,8 @@ export const appConfig: ApplicationConfig = {
     // Tarayıcı seviyesindeki genel hataları dinleyen ve yöneten servis.
     provideBrowserGlobalErrorListeners(),
     // Uygulama rotalarını (Routes) Angular'a tanıtan servis.
-    provideRouter(routes)
+    provideRouter(routes),
+    // HTTP istekleri için gerekli servis.
+    provideHttpClient()
   ]
 };

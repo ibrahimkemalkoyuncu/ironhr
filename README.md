@@ -15,12 +15,24 @@
 
 ---
 
+## ✨ Öne Çıkan Son Özellikler (Ocak 2025)
+
+- 🎨 **Premium UI/UX:** Glassmorphism efektleri, modern degradeler ve interaktif bileşenler ile tamamen yenilenen kullanıcı arayüzü.
+- 📅 **İzin Takvimi 2.0:** Tüm şirketin izin durumunu tek bir bakışta gösteren, detaylı bilgilendirme balonlarına (tooltips) sahip modern takvim.
+- 📊 **Dinamik Dashboard:** Canlı istatistikler, şube dağılım grafikleri ve "Yaklaşan Etkinlikler" zaman çizelgesi.
+- ⚙️ **Refactored API:** Endpoint'lerin `MapApiEndpoints` extension metodu ile merkezi ve tertemiz yönetimi.
+- 🛠️ **Geliştirici Dostu:** Tek komutla (`.\start-ironhr.ps1`) Backend ve Frontend'i aynı anda başlatma imkanı.
+
+---
+
 ## 🏗️ Mimari Prensipler
 
 Bu proje, **Mete Bey**'in liderliğinde aşağıdaki prensipler üzerine inşa edilmiştir:
 
 - **Vertical Slice:** Her özellik (Feature) kendi dilimi içinde izoledir. Shared service ve karmaşık katman bağımlılıkları minimize edilmiştir.
-- **Result Pattern:** İş mantığı hataları `Result` nesnesi ile yönetilir, exception-driven geliştirme yerine deterministik akış tercih edilir.
+- **Clean Program.cs:** Tüm API rotaları `EndpointExtensions` üzerinden yönetilir, böylece ana giriş noktası her zaman temiz ve okunabilir kalır.
+- **Signals Architecture:** Angular tarafında state yönetimi modern Signal yapısı ile gerçekleştirilerek reaktif bir deneyim sunulur.
+- **Result Pattern:** İş mantığı hataları `Result` nesnesi ile yönetilir.
 - **Security First:** SQL Injection riskine karşı parametrik Dapper sorguları ve MediatR Pipeline üzerinden otomatik validasyon.
 
 ---
@@ -44,7 +56,19 @@ Proje hakkında daha detaylı bilgi edinmek için role özel dökümanları ince
 
 ---
 
-## 🛠️ Kurulum ve Çalıştırma
+## 🚀 Hızlı Başlatma (Tavsiye Edilen)
+
+Projeyi hem Backend hem Frontend olacak şekilde tek seferde çalıştırmak için ana dizindeki PowerShell betiğini kullanabilirsiniz:
+
+```powershell
+.\start-ironhr.ps1
+```
+
+_(Detaylar için Run.txt dosyasına bakabilirsiniz.)_
+
+---
+
+## 🛠️ Manuel Kurulum ve Çalıştırma
 
 ### Backend (API)
 
